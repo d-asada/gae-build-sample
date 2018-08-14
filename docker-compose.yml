@@ -1,0 +1,15 @@
+version: "3.6"
+
+services:
+  web:
+    build:
+      context: docker/.
+    volumes:
+      - .:/workspace/src
+    ports:
+      - "8080:8080"
+      - "8000:8000"
+    environment:
+      - GOPATH=/workspace
+    command: dev_appserver.py . --host 0.0.0.0 --admin_host 0.0.0.0
+
